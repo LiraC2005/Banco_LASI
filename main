@@ -1,0 +1,85 @@
+from datetime import datetime
+
+# Senha do sistema
+SENHA = "1234"
+
+# Variáveis da conta
+saldo = 0
+extrato = []
+
+# Login
+senha = input("Digite a senha do sistema: ")
+
+if senha != SENHA:
+    print("Senha incorreta!")
+else:
+    print("\nLogin realizado com sucesso!")
+
+    while True:
+        print("\n===== MENU BANCÁRIO =====")
+        print("1 - Depositar")
+        print("2 - Sacar")
+        print("3 - Ver Extrato")
+        print("4 - Sair")
+
+        opcao = input("Escolha uma opção: ")
+
+        # DEPÓSITO
+        if opcao == "1":
+            valor = float(input("Digite o valor do depósito: R$ "))
+
+            if valor > 0:
+                saldo += valor
+
+                horario = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+
+                extrato.append(
+                    f"[{horario}] Depósito: +R$ {valor:.2f}"
+                )
+
+                print("Depósito realizado com sucesso!")
+
+            else:
+                print("Valor inválido!")
+
+        # SAQUE
+        elif opcao == "2":
+            valor = float(input("Digite o valor do saque: R$ "))
+
+            if valor <= 0:
+                print("Valor inválido!")
+
+            elif valor > saldo:
+                print("Saldo insuficiente!")
+
+            else:
+                saldo -= valor
+
+                horario = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+
+                extrato.append(
+                    f"[{horario}] Saque: -R$ {valor:.2f}"
+                )
+
+                print("Saque realizado com sucesso!")
+
+        # EXTRATO
+        elif opcao == "3":
+            print("\n===== EXTRATO =====")
+
+            if len(extrato) == 0:
+                print("Nenhuma operação realizada.")
+            else:
+                for operacao in extrato:
+                    print(operacao)
+
+            print(f"\nSaldo atual: R$ {saldo:.2f}")
+
+        # SAIR
+        elif opcao == "4":
+            print("Encerrando sistema...")
+            break
+
+        # OPÇÃO INVÁLIDA
+        else:
+            print("Opção inválida!")
