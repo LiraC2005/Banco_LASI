@@ -32,10 +32,19 @@ else:
                 saldo += valor
 
                 horario = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-
+#| Código | Significado |
+#| ------ | ----------- |
+#| %d     | dia         |
+#| %m     | mês         |
+#| %Y     | ano         |
+#| %H     | hora        |
+#| %M     | minuto      |
+#| %S     | segundo     |
+         
                 extrato.append(
                     f"[{horario}] Depósito: +R$ {valor:.2f}"
                 )
+#append() Adiciona um item na lista. O item é adicionado no final da lista.
 
                 print("Depósito realizado com sucesso!")
 
