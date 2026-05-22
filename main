@@ -31,7 +31,7 @@ else:
             if valor > 0:
                 saldo += valor
 
-                horario = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+                horario = datetime.now().strftime("%d/%m/%Y %H:%M:%S")         
 #| Código | Significado |
 #| ------ | ----------- |
 #| %d     | dia         |
